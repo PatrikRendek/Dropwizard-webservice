@@ -1,0 +1,263 @@
+FORMAT: 1A
+HOST: http://localhost:8080/
+
+# Senzor API
+
+Simple Dropwizard webservice allow users to view measured values from emaluted sensors.
+
+## Users [/users]
+
+### List All Users [GET]
+
++ Response 200 (application/json)
+
+        {
+        "userId": 14,
+        "userName": "admin",
+        "userDevices": [
+        {
+              "deviceId": 15,
+        "data": {
+        "temperature": "8.2",
+        "date": "31.2.1994:14:52:16"
+        }
+        }
+        ]
+        }
+## Create User [/users/create]
+### Create a New User [POST]
+
+
+
++ Request (application/json)
+
+        {
+        "userId": 18,
+        "userName": "admin2",
+        "userDevices": [
+        {
+              "deviceId": 19,
+        "data": {
+        "temperature": "10.2",
+        "date": "31.2.1998:15:52:16"
+        }
+        }
+        ]
+        }
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+            "userId": 18,
+            "userName": "admin2",
+            "userDevices": [
+            {
+                 "deviceId": 19,
+            "data": {
+            "temperature": "10.2",
+            "date": "31.2.1998:15:52:16"
+            }
+            }
+            ]
+            }
+
+## User [/users/{name}]
+
++ Parameters
+    + name (required, String, `admin2`) ... User name
+
+### Get User [GET]
+
++ Response 200 (application/json)
+
+        {
+            "userId": 18,
+            "userName": "admin2",
+            "userDevices": [
+            {
+                 "deviceId": 19,
+            "data": {
+            "temperature": "10.2",
+            "date": "31.2.1998:15:52:16"
+            }
+            }
+            ]
+            }
+            
+### Delete User [DELETE]
+
++ Response 204
+
+### Update User [PUT]
+
++ Request (application/json)
+
+            {
+            "userId": 18,
+            "userName": "admin2",
+            "userDevices": [
+            {
+                 "deviceId": 19,
+            "data": {
+            "temperature": "11.2",
+            "date": "31.2.1998:15:53:16"
+            }
+            }
+            ]
+            }
+
++ Response 200 (application/json)
+
+        {
+            "userId": 18,
+            "userName": "admin22",
+            "userDevices": [
+            {
+                 "deviceId": 19,
+            "data": {
+            "temperature": "11.2",
+            "date": "31.2.1998:15:53:16"
+            }
+            }
+            ]
+            }
+
+## Device [/users/{name}/device/{id}]
+
++ Parameters
+    + name (required, String, `admin2`) ... User name
+    + id (required, Number, `19`) ... User id
+
+### Get Device [GET]
+
++ Response 200 (application/json)
+        
+        {
+        "deviceId": 19,
+        "data": {
+        "temperature": "11.2",
+        "date": "31.2.1998:15:53:16"
+        }
+        }
+
+### Delete Device [DELETE]
+
++ Response 204
+
+### Update Device [PUT]
+
++ Request (application/json)
+
+        {
+        "deviceId": 19,
+        "data": {
+        "temperature": "12.2",
+        "date": "31.2.1998:15:54:16"
+        }
+        }
++ Response 200 (application/json)
+
+        {
+        "deviceId": 19,
+        "data": {
+        "temperature": "12.2",
+        "date": "31.2.1998:15:54:16"
+        }
+        }
+
+### Create Device [POST]
+
++ Request (application/json)
+
+        {
+        "deviceId": 18,
+        "data": {
+        "temperature": "18.2",
+        "date": "31.2.2016:15:04:16"
+        }
+        }
++ Response 200 (application/json)
+
+        {
+        "deviceId": 18,
+        "data": {
+        "temperature": "18.2",
+        "date": "31.2.2016:15:04:16"
+        }
+        }
+        
+## Data [/users/{name}/device/{id}/data]
+
++ Parameters
+    + name (required, String, `admin2`) ... User name
+    + id (required, Number, `19`) ... User id
+
+### Get Data [GET]
+
++ Response 200 (application/json)
+        
+         
+        {
+        "temperature": "18.2",
+        "date": "31.2.2016:15:04:16"
+        }
+
+### Delete Data [DELETE]
+
++ Response 204
+
+### Update Data [PUT]
+
++ Request (application/json)
+
+        {
+        "temperature": "17.3",
+        "date": "31.2.2016:15:05:16"
+        }
+        
++ Response 200 (application/json)
+
+        {
+        "temperature": "17.3",
+        "date": "31.2.2016:15:05:16"
+        }
+
+### Create Data [POST]
+
++ Request (application/json)
+
+        {
+        "temperature": "17.3",
+        "date": "31.2.2016:15:05:16"
+        }
++ Response 200 (application/json)
+
+        {
+        "temperature": "17.3",
+        "date": "31.2.2016:15:05:16"
+        }
+        
+## View [/view/user/{name}]
+
++ Parameters
+    + name (required, String, `admin2`) ... User name
+
+### Show User [GET]
+
++ Response 200 (application/json)
+
+        {
+            "userId": 18,
+            "userName": "admin2",
+            "userDevices": [
+            {
+                 "deviceId": 19,
+            "data": {
+            "temperature": "10.2",
+            "date": "31.2.1998:15:52:16"
+            }
+            }
+            ]
+            }
